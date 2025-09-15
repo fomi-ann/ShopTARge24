@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,25 @@ namespace ShopTARge24.ApplicationServices.Services
             spaceships.ModifiedAt = DateTime.Now;
 
             await _context.Spaceships.AddAsync(spaceships);
+            await _context.SaveChangesAsync();
+
+            return spaceships;
+        }
+
+        public async Task<Spaceships> Update(SpaceshipDto dto)
+        {
+            Spaceships spaceships = new Spaceships();
+
+            spaceships.Id = dto.Id;
+            spaceships.Name = dto.Name;
+            spaceships.Classification = dto.Classification;
+            spaceships.BuiltDate = dto.BuiltDate;
+            spaceships.Crew = dto.Crew;
+            spaceships.EnginePower = dto.EnginePower;
+            spaceships.CreatedAt = dto.CreatedAt;
+            spaceships.ModifiedAt = DateTime.Now;
+
+            _context.Spaceships.Update(spaceships);
             await _context.SaveChangesAsync();
 
             return spaceships;
