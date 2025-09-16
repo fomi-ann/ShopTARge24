@@ -80,5 +80,7 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return result;
         }
+
+        
     }
 }
