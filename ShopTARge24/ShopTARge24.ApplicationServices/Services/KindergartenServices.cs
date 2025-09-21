@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
@@ -37,6 +38,25 @@ namespace ShopTARge24.ApplicationServices.Services
             await _context.SaveChangesAsync();
 
             return kindergarten;
+        }
+
+        public async Task<Kindergarten> DetailAsync(Guid id)
+        {
+            var result = await _context.Kindersgartens
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return result;
+        }
+
+        public async Task<Kindergarten> Delete(Guid id)
+        {
+            var result = await _context.Kindersgartens
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Kindersgartens.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return result;
         }
     }
 }

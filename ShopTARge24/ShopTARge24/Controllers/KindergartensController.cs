@@ -67,6 +67,41 @@ namespace ShopTARge24.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.DetailAsync(id);
+            if (kindergarten == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new KindergartenDeleteViewModel();
+
+            vm.Id = kindergarten.Id;
+            vm.GroupName = kindergarten.GroupName;
+            vm.ChildrenCount = kindergarten.ChildrenCount;
+            vm.KindergartenName = kindergarten.KindergartenName;
+            vm.TeacherName = kindergarten.TeacherName;
+            vm.CreatedAt = kindergarten.CreatedAt;
+            vm.UpdatedAt = kindergarten.UpdatedAt;
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.Delete(id);
+
+            if (kindergarten == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
 
