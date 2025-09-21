@@ -13,5 +13,6 @@ namespace ShopTARge24.Core.ServiceInterface
         Task<Kindergarten> Create(KindergartenDto dto);
         Task<Kindergarten> DetailAsync(Guid id);
         Task<Kindergarten> Delete(Guid id);
+        Task<Kindergarten> Update(KindergartenDto dto);
     }
 }

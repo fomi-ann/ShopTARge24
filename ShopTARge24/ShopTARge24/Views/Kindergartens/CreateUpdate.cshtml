@@ -1,6 +1,14 @@
-﻿@model ShopTARge24.Models.Kindergartens.KindergartenCreateViewModel
+﻿@model ShopTARge24.Models.Kindergartens.KindergartenCreateUpdateViewModel
 
-<h1>Create</h1>
+@if (Model.Id != Guid.Empty)
+{
+	<h1>Update</h1>
+}
+else
+{
+	<h1>Create</h1>
+}
+
 
 <div>
 	<form method="post" enctype="multipart/form-data">
@@ -36,6 +44,14 @@
 			</div>
 		</div>
 
+		@if (Model.Id != Guid.Empty)
+		{
+		<input asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
+		}
+		else
+		{
 		<input asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-primary" value="Create" />
+		}
+
 	</form>
 </div>
