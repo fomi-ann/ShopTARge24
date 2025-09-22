@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.
 
 namespace ShopTARge24.Core.Dto
 {
@@ -10,6 +12,9 @@ namespace ShopTARge24.Core.Dto
         public DateTime? BuiltDate { get; set; }
         public int? Crew { get; set; }
         public int? EnginePower { get; set; }
+
+        public List<IFormFile> Files { get; set; }
+
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
     }
