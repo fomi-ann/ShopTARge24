@@ -60,6 +60,8 @@ namespace ShopTARge24.ApplicationServices.Services
             spaceships.EnginePower = dto.EnginePower;
             spaceships.CreatedAt = dto.CreatedAt;
             spaceships.ModifiedAt = DateTime.Now;
+            
+            _fileServices.FilesToApi(dto, spaceships);
 
             _context.Spaceships.Update(spaceships);
             await _context.SaveChangesAsync();
