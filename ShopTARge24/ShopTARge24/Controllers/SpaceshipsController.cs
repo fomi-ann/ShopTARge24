@@ -15,14 +15,17 @@ namespace ShopTARge24.Controllers
     {
         private readonly ShopTARge24Context _context;
         private readonly ISpaceshipServices _spaceshipServices;
+        private readonly IFileServices _fileServices;
         public SpaceshipsController
             (
                 ShopTARge24Context context,
-                ISpaceshipServices spaceshipServices
+                ISpaceshipServices spaceshipServices,
+                IFileServices fileServices
             )
         {
             _context = context;
             _spaceshipServices = spaceshipServices;
+            _fileServices = fileServices;
         }
         
         public IActionResult Index()
@@ -222,6 +225,22 @@ namespace ShopTARge24.Controllers
             vm.Images.AddRange(images);
 
             return View(vm);
+        }
+        public async Task<IActionResult> RemoveImage(ImageViewModel vm)
+        {
+
+            var dto = new FileToApiDto()
+            {
+                Id = vm.ImageId
+            };
+
+            var image = await _fileServices.RemoveImageFromApi(dto);
+
+            if (image == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
