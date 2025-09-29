@@ -36,11 +36,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "multipleFileUpload")),
-    RequestPath = "/multipleFileUpload"
-});
+app.UseStaticFiles();
 
 app.Run();
