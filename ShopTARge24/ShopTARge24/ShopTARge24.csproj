@@ -7,16 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\multipleFileUpload\20895ef1-383d-4e62-8059-a0166c60ab0a_hq720.jpg" />
-    <None Include="wwwroot\multipleFileUpload\4aeed9fa-de86-458e-8d2f-37a65a902d9a_Perbedaan Hacker dan Cracker.webp" />
-    <None Include="wwwroot\multipleFileUpload\5cf9bcb0-f99a-4ce5-b6f6-9c7a3a07d82e_watson.jfif" />
-    <None Include="wwwroot\multipleFileUpload\761b15ce-7bdb-4dd5-80bc-2889339447d5_tp.PNG" />
-    <None Include="wwwroot\multipleFileUpload\7714d7ef-131f-4095-be32-865f8b7a79cc_hq720.jpg" />
-    <None Include="wwwroot\multipleFileUpload\9767286a-c3bf-49ce-a145-df48c56c35cc_b24e55a7e971ee6dcb68852fcfac7966.jpg" />
-    <None Include="wwwroot\multipleFileUpload\cdc69ae8-967a-4b82-93d6-604ca276ce5b_retro-anime-gif-3.gif" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
       <PrivateAssets>all</PrivateAssets>
