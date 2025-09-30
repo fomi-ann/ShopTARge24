@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ShopTARge24.Models.RealEstate.RealEstateIndexViewModel>
+@{
+	int rowNr = 1;
+}
+
+<div class="h1">
+	Real Estate
+</div>
+
+<form method="post">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Nr</th>
+				<th scope="col">Location</th>
+				<th scope="col">Building Type</th>
+				<th scope="col">Area m2</th>
+				<th scope="col">Room number</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var realEstate in Model)
+			{
+				<tr>
+					<td>@rowNr</td>
+					<td>@realEstate.Location</td>
+					<td>@realEstate.BuildingType</td>
+					<td>@realEstate.Area</td>
+					<td>@realEstate.RoomNumber</td>
+				</tr>
+				rowNr += 1;
+			}
+		</tbody>
+	</table>
+</form>
