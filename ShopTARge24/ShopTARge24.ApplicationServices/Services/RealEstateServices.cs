@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
+using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 
@@ -28,6 +29,24 @@ namespace ShopTARge24.ApplicationServices.Services
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return result;
+        }
+
+        public async Task<RealEstate> Create(RealEstateDto dto)
+        {
+            RealEstate realEstate = new RealEstate();
+
+            realEstate.Id = Guid.NewGuid();
+            realEstate.Area = dto.Area;
+            realEstate.Location = dto.Location;
+            realEstate.BuildingType = dto.BuildingType;
+            realEstate.RoomNumber = dto.RoomNumber;
+            realEstate.CreatedAt = DateTime.Now;
+            realEstate.ModifiedAt = DateTime.Now;
+
+            await _context.RealEstates.AddAsync(realEstate);
+            await _context.SaveChangesAsync();
+
+            return realEstate;
         }
     }
 }
