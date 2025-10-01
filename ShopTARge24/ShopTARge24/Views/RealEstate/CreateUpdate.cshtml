@@ -1,12 +1,14 @@
 ﻿@model ShopTARge24.Models.RealEstate.RealEstateCreateUpdateViewModel
 
+<h1>Real Estate</h1>
+
 @if (Model.Id.HasValue)
 {
-	<h1>Update</h1>
+	<h4>Update</h4>
 }
 else
 {
-	<h1>Create</h1>
+	<h4>Create</h4>
 }
 
 <div>
@@ -45,11 +47,13 @@ else
 
 		@if (Model.Id.HasValue)
 		{
-			<input asp-action="update" asp-controller="realestate" type="submit" class="btn btn-outline-primary" value="Update"/>
+			<input asp-action="update" asp-controller="realestate" type="submit" class="btn btn-warning" value="Update"/>
 		}
 		else
 		{
 			<input asp-action="create" asp-controller="realestate" type="submit" class="btn btn-primary" value="Create"/>
 		}
+		<a asp-action="Index" asp-controller="realestate" class="btn btn-secondary">Back</a>
+
 	</form>
 </div>
