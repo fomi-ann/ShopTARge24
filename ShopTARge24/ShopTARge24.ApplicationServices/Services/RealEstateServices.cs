@@ -48,5 +48,23 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return realEstate;
         }
+
+        public async Task<RealEstate> Update (RealEstateDto dto)
+        {
+            RealEstate realEstate = new RealEstate();
+
+            realEstate.Id = dto.Id;
+            realEstate.Area = dto.Area;
+            realEstate.Location = dto.Location;
+            realEstate.BuildingType = dto.BuildingType;
+            realEstate.RoomNumber= dto.RoomNumber;
+            realEstate.CreatedAt = dto.CreatedAt;
+            realEstate.ModifiedAt = DateTime.Now;
+
+            _context.RealEstates.Update(realEstate);
+            await _context.SaveChangesAsync();
+
+            return realEstate;
+        }
     }
 }

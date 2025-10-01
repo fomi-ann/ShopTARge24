@@ -12,5 +12,6 @@ namespace ShopTARge24.Core.ServiceInterface
     {
         Task<RealEstate> DetailAsync(Guid id);
         Task<RealEstate> Create(RealEstateDto dto);
+        Task<RealEstate> Update(RealEstateDto dto);
     }
 }
