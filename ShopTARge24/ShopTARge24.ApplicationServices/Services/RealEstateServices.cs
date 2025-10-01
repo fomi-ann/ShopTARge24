@@ -66,5 +66,16 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return realEstate;
         }
+
+        public async Task<RealEstate> Delete(Guid id)
+        {
+            var result = await _context.RealEstates
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.RealEstates.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return result;
+        }
     }
 }
