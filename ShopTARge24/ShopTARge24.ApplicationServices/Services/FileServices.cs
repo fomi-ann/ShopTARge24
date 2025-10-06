@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
@@ -94,6 +95,30 @@ namespace ShopTARge24.ApplicationServices.Services
             }
 
             return null;
+        }
+        public async Task UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        {
+            //kontroll kas on v'hemalt [ks fail v]i mitu
+            if (dto.Files != null && dto.Files.Count > 0) {
+
+                foreach (var file in dto.Files)
+                {
+
+                    using (var target = new MemoryStream())
+                    {
+                        FileToDatabase files = new FileToDatabase()
+                        {
+                            Id = Guid.NewGuid(),
+                            ImageTitle = file.FileName,
+                            RealEstateId = domain.Id
+                        };
+                        file.CopyTo(target);
+                        files.ImageData = target.ToArray();
+
+                        _context.FileToDatabases.Add(files);
+                    }
+                }
+            }
         }
     }
 }

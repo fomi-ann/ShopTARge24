@@ -1,4 +1,6 @@
-﻿namespace ShopTARge24.Models.RealEstate
+﻿using ShopTARge24.Core.Dto;
+
+namespace ShopTARge24.Models.RealEstate
 {
     public class RealEstateCreateUpdateViewModel
     {
@@ -9,5 +11,8 @@
         public string? BuildingType { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
+        public List<IFormFile> Files { get; set; }
+        public List<RealEstateImageViewModel> Image { get; set; }
+            = new List<RealEstateImageViewModel>();
     }
 }
