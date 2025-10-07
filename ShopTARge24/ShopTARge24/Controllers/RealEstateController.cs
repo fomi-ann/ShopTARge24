@@ -44,6 +44,16 @@ namespace ShopTARge24.Controllers
             {
                 return NotFound();
             }
+            var images = await _context.FileToDatabases
+                .Where(x => x.RealEstateId == id)
+                .Select(y => new RealEstateImageViewModel
+                {
+                    Id = y.Id,
+                    RealEstateId = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
 
             var vm = new RealEstateDetailsViewModel();
 
@@ -54,6 +64,8 @@ namespace ShopTARge24.Controllers
             vm.BuildingType = realEstate.BuildingType;
             vm.CreatedAt = realEstate.CreatedAt;
             vm.ModifiedAt = realEstate.ModifiedAt;
+            
+            vm.Images.AddRange(images);
 
             return View(vm);
         }
