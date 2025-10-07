@@ -13,5 +13,6 @@
 
         public List<RealEstateImageViewModel> Images { get; set; }
         = new List<RealEstateImageViewModel>();
+
     }
 }
