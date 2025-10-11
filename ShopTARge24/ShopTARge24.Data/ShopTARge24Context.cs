@@ -15,7 +15,7 @@ namespace ShopTARge24.Data
         }
         public DbSet<Spaceships> Spaceships { get; set; }
         public DbSet<Kindergarten> Kindersgartens { get; set; }
-
+        public DbSet<FileToDB> FileToDBs { get; set; }
 
     }
 }
