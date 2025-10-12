@@ -4,6 +4,7 @@ using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.Kindergartens;
 using ShopTARge24.ApplicationServices.Services;
+using ShopTARge24.Core.Domain;
 
 
 namespace ShopTARge24.Controllers
@@ -56,6 +57,15 @@ namespace ShopTARge24.Controllers
                 TeacherName = vm.TeacherName,
                 CreatedAt = vm.CreatedAt,
                 UpdatedAt = vm.UpdatedAt,
+
+                Files = vm.Files,
+                Images = vm.Images
+                .Select(x => new FileToDBdto{
+                    Id = x.Id,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    KindergartenId = x.KindergartenId
+                }).ToArray()
             };
 
             var result = await _kindergartenServices.Create(dto);
