@@ -22,7 +22,7 @@ namespace ShopTARge24.ApplicationServices.Services
             _context = context;
         }
 
-        public async Task UploadFilesToDB(KindergartenDto dto, KindergartenDto domain)
+        public async Task UploadFilesToDB(KindergartenDto dto, Kindergarten domain)
         {
             if (dto.Files != null && dto.Files.Count > 0)
             {
