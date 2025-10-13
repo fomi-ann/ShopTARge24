@@ -60,6 +60,10 @@ namespace ShopTARge24.ApplicationServices.Services
             kindergarten.CreatedAt = dto.CreatedAt;
             kindergarten.UpdatedAt = DateTime.Now;
 
+            if (dto.Files != null )
+            {
+                await _fileServices.UploadFilesToDB(dto, kindergarten);
+            }
             _context.Kindersgartens.Update(kindergarten);
             await _context.SaveChangesAsync();
 
