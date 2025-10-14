@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
@@ -64,6 +65,8 @@ namespace ShopTARge24.ApplicationServices.Services
             {
                 await _fileServices.UploadFilesToDB(dto, kindergarten);
             }
+
+
             _context.Kindersgartens.Update(kindergarten);
             await _context.SaveChangesAsync();
 
@@ -80,13 +83,17 @@ namespace ShopTARge24.ApplicationServices.Services
 
         public async Task<Kindergarten> Delete(Guid id)
         {
-            var result = await _context.Kindersgartens
-                .FirstOrDefaultAsync(x => x.Id == id);
 
+            var result = await _context.Kindersgartens
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+                        _fileServices.RemoveImagesFromDB(id);
             _context.Kindersgartens.Remove(result);
+
             await _context.SaveChangesAsync();
 
             return result;
         }
+
     }
 }
