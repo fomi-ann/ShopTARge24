@@ -55,14 +55,16 @@ else
 			@foreach (var images in Model.Images)
 			{
 				<partial name="_Images" model="images" />
-				<form asp-action="RemoveImage" asp-controller="Kindergartens" method="post">
-					<input type="hidden" name="kindergartenId" value="@Model.Id" />
-					<input type="hidden" name="imageId" value="@images.Id" />
-					<input type="submit" class="btn btn-primary" value="Remove Image" />
-				</form>
+				<a asp-action="RemoveImage"
+				   asp-controller="Kindergartens"
+				   asp-route-imageId="@images.Id"
+				   asp-route-kindergartenId="@Model.Id"
+				   class="btn btn-danger">
+					Remove Image
+				</a>
 			}
 		</div>
-
+		<a asp-action="Index" asp-asp-controller="kindergartens" class="btn btn-success">Back</a>
 		@if (Model.Id != Guid.Empty)
 		{
 		<input asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
@@ -73,4 +75,5 @@ else
 		}
 
 	</form>
+	
 </div>

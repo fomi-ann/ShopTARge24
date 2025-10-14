@@ -224,7 +224,7 @@ namespace ShopTARge24.Controllers
                 }).ToArrayAsync();
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> RemoveImage(Guid imageId, Guid kindergartenId)
         {
             await _fileServices.RemoveImageFromDB(imageId);
