@@ -9,6 +9,7 @@ namespace ShopTARge24.Core.ServiceInterface
 {
     public interface IWeatherForecastServices
     {
-        public async Task<AccuLocationWeatherResultDto> AccuWeatherResult(AccuLocationWeatherResultDto dto);
+        Task<AccuLocationWeatherResultDto> AccuWeatherResult(AccuLocationWeatherResultDto dto);
+
     }
 }

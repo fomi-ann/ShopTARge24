@@ -1,0 +1,49 @@
+﻿@model ShopTARge24.Models.AccuWeathers.AccuWeatherViewModel
+
+<div class="container">
+	<h2>Forecast for the selected city</h2>
+	<h2>@Html.DisplayFor(Model => Model.CityName)</h2>
+	<hr />
+	<dl class="row text-dark">
+		<div>
+			<dt class="col-sm-2">
+				Temperature Min (Celsius):
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(Model => Model.TempMinCelsius) C
+			</dd>
+		</div>
+		<div>
+			<dt>
+				Temperature Max (Celsius):
+			</dt>
+			<dd class="col-sm-2">
+				@Html.DisplayFor(Model => Model.TempMaxCelsius) C
+			</dd>
+		</div>
+		<div>
+			<dt>
+				Severity:
+			</dt>
+			<dd class="col-sm-2">
+				@Html.DisplayFor(Model => Model.Severity)
+			</dd>
+		</div>
+		<div>
+			<dt>
+				Category:
+			</dt>
+			<dd class="col-sm-2">
+				@Html.DisplayFor(Model => Model.Category)
+			</dd>
+		</div>
+		<div>
+			<dt>
+				Weather Text:
+			</dt>
+			<dd class="col-sm-2">
+				@Html.DisplayFor(Model => Model.WeatherText)
+			</dd>
+		</div>
+	</dl>
+</div>
