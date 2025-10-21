@@ -1,72 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Identity.Client.Kerberos;
-
-namespace ShopTARge24.Core.Dto
+﻿namespace ShopTARge24.Core.Dto
 {
+    //public class AccuCityCodeRootDto
+    //{
+    //    public CityCode[]? CityCode { get; set; }
+    //}
 
     public class AccuCityCodeRootDto
     {
         public int Version { get; set; }
         public string Key { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
+        public int Rank { get; set; }
         public string LocalizedName { get; set; } = string.Empty;
         public string EnglishName { get; set; } = string.Empty;
         public string PrimaryPostalCode { get; set; } = string.Empty;
         public Region? Region { get; set; }
         public Country? Country { get; set; }
         public AdministrativeArea? AdministrativeArea { get; set; }
-        public TimeZone? TimeZone { get; set; }
-        public GeoPosition? GeoPosition { get; set; }
+        public Timezone? TimeZone { get; set; }
+        public Geoposition? GeoPosition { get; set; }
         public bool IsAlias { get; set; }
-        public SupplementalAdminAreas? SupplementalAdminAreas { get; set; }
-        public List<string> DataSets { get; set; }
+        public SupplementalAdminArea[]? SupplementalAdminAreas { get; set; }
+        public string[]? DataSets { get; set; }
     }
-
 
     public class Region
     {
         public string Id { get; set; } = string.Empty;
-        public string LocalizedName {  set; get; } = string.Empty;
+        public string LocalizedName { get; set; } = string.Empty;
         public string EnglishName { get; set; } = string.Empty;
     }
 
     public class Country
     {
         public string Id { get; set; } = string.Empty;
-        public string LocalizedName { set; get; } = string.Empty;
+        public string LocalizedName { get; set; } = string.Empty;
         public string EnglishName { get; set; } = string.Empty;
     }
 
     public class AdministrativeArea
     {
         public string Id { get; set; } = string.Empty;
-        public string LocalizedName { set; get; } = string.Empty;
+        public string LocalizedName { get; set; } = string.Empty;
         public string EnglishName { get; set; } = string.Empty;
         public int Level { get; set; }
         public string LocalizedType { get; set; } = string.Empty;
         public string EnglishType { get; set; } = string.Empty;
-        public string CountryId { get; set; } = string.Empty;
+        public string CountryID { get; set; } = string.Empty;
     }
 
-    public class TimeZone
+    public class Timezone
     {
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public int GmtOffset { get; set; }
         public bool IsDaylightSaving { get; set; }
-        public string NextOffsetChange { get; set; } = string.Empty;
+        public DateTime NextOffsetChange { get; set; }
     }
 
-    public class GeoPosition
+    public class Geoposition
     {
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
-        public Elevation? Metric { get; set; }
-        public Elevation? Imperial{ get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
+        public Elevation? Elevation { get; set; }
     }
 
     public class Elevation
@@ -89,11 +85,10 @@ namespace ShopTARge24.Core.Dto
         public int UnitType { get; set; }
     }
 
-    public class SupplementalAdminAreas
+    public class SupplementalAdminArea
     {
         public int Level { get; set; }
-        public string LocalizedType { get; set; } = string.Empty;
-        public string EnglishType { get; set; } = string.Empty;
+        public string LocalizedName { get; set; } = string.Empty;
+        public string EnglishName { get; set; } = string.Empty;
     }
-
 }
