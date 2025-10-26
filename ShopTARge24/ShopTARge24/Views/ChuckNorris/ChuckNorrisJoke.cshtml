@@ -24,8 +24,9 @@
                         <h5 class="card-title">Here is a Chuck Norris Joke:</h5>
                         <p class="card-text">@Html.DisplayFor(Model => Model.Value)</p>
 
-                        <div>
+                        <div class="d-flex justify-content-between">
                             <button asp-controller="chuckNorris" asp-action="getJoke" type="submit" class="btn btn-primary">Another one!</button>
+                            <a asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-secondary">Get random joke!</a>
                         </div>
 
                     </div>
