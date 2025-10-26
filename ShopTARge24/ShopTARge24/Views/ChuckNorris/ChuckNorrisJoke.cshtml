@@ -1,13 +1,18 @@
 ﻿@model ShopTARge24.Models.ChuckNorris.ChuckNorrisJokeViewModel
 
-<h1>Here is a Chuck Norris Joke:</h1>
-
-<div>
-	<p>@Html.DisplayFor(Model => Model.Value)</p>
+<div class="container d-flex justify-content-center">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Here is a Chuck Norris Joke:</h5>
+                <p class="card-text">@Html.DisplayFor(Model => Model.Value)</p>
+                <form method="get">
+                    <div>
+                        <button asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-primary">Another one!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<form method="get">
-	<div>
-		<button asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-primary">Another one!</button>
-	</div>
-</form>
 
