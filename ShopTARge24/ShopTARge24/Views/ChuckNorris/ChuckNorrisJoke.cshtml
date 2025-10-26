@@ -21,12 +21,13 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
+                        <img src="@Model.Icon_url" class="float-end" />
                         <h5 class="card-title">Here is a Chuck Norris Joke:</h5>
                         <p class="card-text">@Html.DisplayFor(Model => Model.Value)</p>
 
                         <div class="d-flex justify-content-between">
                             <button asp-controller="chuckNorris" asp-action="getJoke" type="submit" class="btn btn-primary">Another one!</button>
-                            <a asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-secondary">Get random joke!</a>
+                            <a asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-secondary">Get a random joke!</a>
                         </div>
 
                     </div>

@@ -31,7 +31,8 @@ namespace ShopTARge24.Controllers
             {
                 Value = dto.Value,
                 SelectedCategory = selectedCategory,
-                CategoriesList = _chuckNorrisServices.GetCategoriesList()
+                CategoriesList = _chuckNorrisServices.GetCategoriesList(),
+                Icon_url = dto.Icon_url
             };
 
             return View("ChuckNorrisJoke", vm);
