@@ -1,18 +1,39 @@
 ﻿@model ShopTARge24.Models.ChuckNorris.ChuckNorrisJokeViewModel
 
 <div class="container d-flex justify-content-center">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Here is a Chuck Norris Joke:</h5>
-                <p class="card-text">@Html.DisplayFor(Model => Model.Value)</p>
-                <form method="get">
-                    <div>
-                        <button asp-controller="chuckNorris" asp-action="getJoke" class="btn btn-primary">Another one!</button>
+
+    <form>
+
+        <div class="btn-group mb-3" role="group">
+            @foreach (var cat in Model.CategoriesList)
+            {
+                <input type="radio"
+                       class="btn-check"
+                       name="selectedCategory"
+                       id="@cat"
+                       value="@cat"
+                       autocomplete="off"
+                       @(Model.SelectedCategory == cat ? "checked" : "") />
+                <label class="btn btn-outline-primary" for="@cat">@cat</label>
+            }
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Here is a Chuck Norris Joke:</h5>
+                        <p class="card-text">@Html.DisplayFor(Model => Model.Value)</p>
+
+                        <div>
+                            <button asp-controller="chuckNorris" asp-action="getJoke" type="submit" class="btn btn-primary">Another one!</button>
+                        </div>
+
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+
+    </form>
 </div>
+
 

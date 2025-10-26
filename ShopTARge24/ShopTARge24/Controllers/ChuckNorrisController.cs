@@ -23,13 +23,16 @@ namespace ShopTARge24.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetJoke(ChuckNorrisJokeViewModel model)
+        public async Task<IActionResult> GetJoke(string selectedCategory)
         {
             ChuckNorrisResponseDto dto = new();
-            _chuckNorrisServices.GetChuckNorrisJoke(dto);
-            ChuckNorrisJokeViewModel vm = new();
-
-            vm.Value = dto.Value;
+            await _chuckNorrisServices.GetChuckNorrisJoke(dto, selectedCategory);
+            var vm = new ChuckNorrisJokeViewModel
+            {
+                Value = dto.Value,
+                SelectedCategory = selectedCategory,
+                CategoriesList = _chuckNorrisServices.GetCategoriesList()
+            };
 
             return View("ChuckNorrisJoke", vm);
         }

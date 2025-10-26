@@ -13,9 +13,14 @@ namespace ShopTARge24.ApplicationServices.Services
 {
     public class ChuckNorrisServices : IChuckNorrisServices
     {
-        public async Task<ChuckNorrisResponseDto> GetChuckNorrisJoke(ChuckNorrisResponseDto dto)
+        public async Task<ChuckNorrisResponseDto> GetChuckNorrisJoke(ChuckNorrisResponseDto dto, string selectedCategory = null)
         {
             string url = $"https://api.chucknorris.io/jokes/random";
+
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                url += $"?category={selectedCategory}";
+            }
 
             using (WebClient client = new WebClient ())
             {
@@ -33,6 +38,18 @@ namespace ShopTARge24.ApplicationServices.Services
             }
 
             return dto;
+        }
+
+        public List<string> GetCategoriesList()
+        {
+            string url = "https://api.chucknorris.io/jokes/categories";
+
+            using (WebClient client = new WebClient())
+            {
+                string json = client.DownloadString(url);
+                var categoriesList = new JavaScriptSerializer().Deserialize<List<string>>(json);
+                return categoriesList ?? new List<string>();
+            }
         }
     }
 }

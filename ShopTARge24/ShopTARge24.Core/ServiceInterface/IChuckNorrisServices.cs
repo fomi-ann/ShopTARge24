@@ -9,6 +9,7 @@ namespace ShopTARge24.Core.ServiceInterface
 {
     public interface IChuckNorrisServices
     {
-        Task<ChuckNorrisResponseDto> GetChuckNorrisJoke(ChuckNorrisResponseDto dto);
+        Task<ChuckNorrisResponseDto> GetChuckNorrisJoke(ChuckNorrisResponseDto dto, string selectedCategory = null);
+        List<string> GetCategoriesList();
     }
 }
