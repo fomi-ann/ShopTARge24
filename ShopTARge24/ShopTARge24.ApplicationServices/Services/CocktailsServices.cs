@@ -15,13 +15,15 @@ namespace ShopTARge24.ApplicationServices.Services
     {
         public async Task<DrinkDto> GetRandomCocktail(DrinkDto dto)
         {
-            string url = $"www.thecocktaildb.com/api/json/v1/1/random.php";
+            string url = $"https://www.thecocktaildb.com/api/json/v1/1/random.php";
             
             using (WebClient client = new WebClient())
             {
                 string json = client.DownloadString(url);
-                DrinkDto drinkResponseDto = new JavaScriptSerializer()
-                    .Deserialize<DrinkDto>(json);
+                var root = new JavaScriptSerializer().Deserialize<Root>(json);
+                var drinkResponseDto = root.Drinks.FirstOrDefault();
+                //DrinkDto drinkResponseDto = new JavaScriptSerializer()
+                    //.Deserialize<DrinkDto>(json);
                 
                 dto.idDrink = drinkResponseDto.idDrink;
                 dto.strDrink = drinkResponseDto.strDrink;
