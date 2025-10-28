@@ -1,5 +1,89 @@
 ﻿@model ShopTARge24.Models.Cocktails.CocktailRecipeViewModel
+@{
+	int rowNr = 1;
+}
 
-<div>
-	<h1>@Html.DisplayFor(Model => Model.idDrink)</h1>
+<div class="container">
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<img src="@Model.strDrinkThumb" class="rounded" />
+
+			</div>
+			<div class="col">
+				<div class="row">
+					<h1>
+						@Html.DisplayFor(Model => Model.strDrink)
+					</h1>
+					<table class="table w-100">
+						<thead>
+							<tr>
+								
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+							<tr>
+								<th scope="row">Drink type</th>
+								<td>@Html.DisplayFor(Model => Model.strAlcoholic)</td>
+							</tr>
+							<tr>
+								<th scope="row">Drink category</th>
+								<td>@Html.DisplayFor(Model => Model.strCategory)</td>
+							</tr>
+							<tr>
+								<th scope="row">Drink glass</th>
+								<td>@Html.DisplayFor(Model => Model.strGlass)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="row mt-24 mb-24">
+					<h3>
+						How to prepare:
+					</h3>
+					<p>
+						@Html.DisplayFor(Model => Model.strInstructions)
+					</p>
+				</div>
+
+				<div>
+					<h3>
+						Ingredient list:
+					</h3>
+					<table class ="table w-100">
+						<thead>
+							<tr>
+						
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+							@for (int i = 1; i <= 15; i++)
+							{
+								var ingredientProp = Model.GetType().GetProperty($"strIngredient{i}");
+								var measureProp = Model.GetType().GetProperty($"strMeasure{i}");
+
+								var ingredient = ingredientProp?.GetValue(Model)?.ToString();
+								var measure = measureProp?.GetValue(Model)?.ToString();
+
+								if (!string.IsNullOrEmpty(ingredient))
+								{
+									<tr>
+										<td>@rowNr</td>
+										<td>@ingredient</td>
+										<td>@measure</td>
+									</tr>
+									rowNr++;
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
 </div>
