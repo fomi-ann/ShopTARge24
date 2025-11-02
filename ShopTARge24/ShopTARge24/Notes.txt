@@ -1,10 +1,1 @@
-﻿Old Fashioned
-Margarita
-Martini
-Mojito
-Manhattan
-Negroni
-Daiquiri
-Moscow Mule
-Whiskey Sour
-Espresso Martini
+﻿https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}&units=metric
