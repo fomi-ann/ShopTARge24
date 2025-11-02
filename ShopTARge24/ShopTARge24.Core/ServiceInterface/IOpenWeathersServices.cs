@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopTARge24.Core.Dto.OpenWeathers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace ShopTARge24.Core.ServiceInterface
 {
     public interface IOpenWeathersServices
     {
+        Task<OpenWeathersDto> OpenWeatherResult(OpenWeathersDto dto);
     }
 }

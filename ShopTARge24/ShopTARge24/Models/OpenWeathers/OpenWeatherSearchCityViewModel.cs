@@ -2,5 +2,6 @@
 {
     public class OpenWeatherSearchCityViewModel
     {
+        public string cityName { get; set; }
     }
 }
