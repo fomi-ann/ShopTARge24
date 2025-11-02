@@ -1,1 +1,47 @@
 ﻿https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}&units=metric
+
+{
+  "coord": {
+    "lon": 24.7535,
+    "lat": 59.437
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 8.09,
+    "feels_like": 5.14,
+    "temp_min": 7.75,
+    "temp_max": 8.19,
+    "pressure": 1009,
+    "humidity": 94,
+    "sea_level": 1009,
+    "grnd_level": 1007
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 5.14,
+    "deg": 200
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1762102531,
+  "sys": {
+    "type": 1,
+    "id": 1330,
+    "country": "EE",
+    "sunrise": 1762062189,
+    "sunset": 1762093551
+  },
+  "timezone": 7200,
+  "id": 588409,
+  "name": "Tallinn",
+  "cod": 200
+}
