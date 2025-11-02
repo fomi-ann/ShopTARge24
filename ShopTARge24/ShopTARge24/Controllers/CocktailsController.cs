@@ -21,66 +21,75 @@ namespace ShopTARge24.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetRandomCocktail(DrinkDto dto)
+        public async Task<IActionResult> GetCocktail(string cocktail)
         {
-            DrinkDto _dto = new();
-            await _cocktailServices.GetRandomCocktail(dto);
+            DrinkDto dto = new() { strDrink = cocktail};
+            //await _cocktailServices.GetCocktail(dto);
+
+            var result = await _cocktailServices.GetCocktail( dto );
+
+            if (result == null)
+            {
+                ViewBag.ErrorMessage = "No cocktail found, try another name";
+                return View("Index");
+            }
+
             var vm = new CocktailRecipeViewModel
             {
-                idDrink = dto.idDrink,
-                strDrink = dto.strDrink,
-                strDrinkAlternate = dto.strDrinkAlternate,
-                strTags = dto.strTags,
-                strVideo = dto.strVideo,
-                strCategory = dto.strCategory,
-                strIBA = dto.strIBA,
-                strAlcoholic = dto.strAlcoholic,
-                strGlass = dto.strGlass,
-                strInstructions = dto.strInstructions,
-                strInstructionsES = dto.strInstructionsES,
-                strInstructionsDE = dto.strInstructionsDE,
-                strInstructionsFR = dto.strInstructionsFR,
-                strInstructionsIT = dto.strInstructionsIT,
-                strInstructionsZHHANS = dto.strInstructionsZHHANS,
-                strInstructionsZHHANT = dto.strInstructionsZHHANT,
-                strDrinkThumb = dto.strDrinkThumb,
+                idDrink = result.idDrink,
+                strDrink = result.strDrink,
+                strDrinkAlternate = result.strDrinkAlternate,
+                strTags = result.strTags,
+                strVideo = result.strVideo,
+                strCategory = result.strCategory,
+                strIBA = result.strIBA,
+                strAlcoholic = result.strAlcoholic,
+                strGlass = result.strGlass,
+                strInstructions = result.strInstructions,
+                strInstructionsES = result.strInstructionsES,
+                strInstructionsDE = result.strInstructionsDE,
+                strInstructionsFR = result.strInstructionsFR,
+                strInstructionsIT = result.strInstructionsIT,
+                strInstructionsZHHANS = result.strInstructionsZHHANS,
+                strInstructionsZHHANT = result.strInstructionsZHHANT,
+                strDrinkThumb = result.strDrinkThumb,
 
-                strIngredient1 = dto.strIngredient1,
-                strIngredient2 = dto.strIngredient2,
-                strIngredient3 = dto.strIngredient3,
-                strIngredient4 = dto.strIngredient4,
-                strIngredient5 = dto.strIngredient5,
-                strIngredient6 = dto.strIngredient6,
-                strIngredient7 = dto.strIngredient7,
-                strIngredient8 = dto.strIngredient8,
-                strIngredient9 = dto.strIngredient9,
-                strIngredient10 = dto.strIngredient10,
-                strIngredient11 = dto.strIngredient11,
-                strIngredient12 = dto.strIngredient12,
-                strIngredient13 = dto.strIngredient13,
-                strIngredient14 = dto.strIngredient14,
-                strIngredient15 = dto.strIngredient15,
+                strIngredient1 = result.strIngredient1,
+                strIngredient2 = result.strIngredient2,
+                strIngredient3 = result.strIngredient3,
+                strIngredient4 = result.strIngredient4,
+                strIngredient5 = result.strIngredient5,
+                strIngredient6 = result.strIngredient6,
+                strIngredient7 = result.strIngredient7,
+                strIngredient8 = result.strIngredient8,
+                strIngredient9 = result.strIngredient9,
+                strIngredient10 = result.strIngredient10,
+                strIngredient11 = result.strIngredient11,
+                strIngredient12 = result.strIngredient12,
+                strIngredient13 = result.strIngredient13,
+                strIngredient14 = result.strIngredient14,
+                strIngredient15 = result.strIngredient15,
 
-                strMeasure1 = dto.strMeasure1,
-                strMeasure2 = dto.strMeasure2,
-                strMeasure3 = dto.strMeasure3,
-                strMeasure4 = dto.strMeasure4,
-                strMeasure5 = dto.strMeasure5,
-                strMeasure6 = dto.strMeasure6,
-                strMeasure7 = dto.strMeasure7,
-                strMeasure8 = dto.strMeasure8,
-                strMeasure9 = dto.strMeasure9,
-                strMeasure10 = dto.strMeasure10,
-                strMeasure11 = dto.strMeasure11,
-                strMeasure12 = dto.strMeasure12,
-                strMeasure13 = dto.strMeasure13,
-                strMeasure14 = dto.strMeasure14,
-                strMeasure15 = dto.strMeasure15,
+                strMeasure1 = result.strMeasure1,
+                strMeasure2 = result.strMeasure2,
+                strMeasure3 = result.strMeasure3,
+                strMeasure4 = result.strMeasure4,
+                strMeasure5 = result.strMeasure5,
+                strMeasure6 = result.strMeasure6,
+                strMeasure7 = result.strMeasure7,
+                strMeasure8 = result.strMeasure8,
+                strMeasure9 = result.strMeasure9,
+                strMeasure10 = result.strMeasure10,
+                strMeasure11 = result.strMeasure11,
+                strMeasure12 = result.strMeasure12,
+                strMeasure13 = result.strMeasure13,
+                strMeasure14 = result.strMeasure14,
+                strMeasure15 = result.strMeasure15,
 
-                strImageSource = dto.strImageSource,
-                strImageAttribution = dto.strImageAttribution,
-                strCreativeCommonsConfirmed = dto.strCreativeCommonsConfirmed,
-                dateModified = dto.dateModified,
+                strImageSource = result.strImageSource,
+                strImageAttribution = result.strImageAttribution,
+                strCreativeCommonsConfirmed = result.strCreativeCommonsConfirmed,
+                dateModified = result.dateModified,
             };
 
             return View("CocktailRecipe", vm);

@@ -2,6 +2,6 @@
 {
     public class CocktailSearchViewModel
     {
-
+        public string? strDrink {  get; set; }
     }
 }

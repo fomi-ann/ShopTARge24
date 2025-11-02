@@ -9,6 +9,6 @@ namespace ShopTARge24.Core.ServiceInterface
 {
     public interface ICocktailsServices
     {
-        Task<DrinkDto> GetRandomCocktail(DrinkDto dto);
+        Task<DrinkDto> GetCocktail(DrinkDto dto);
     }
 }
