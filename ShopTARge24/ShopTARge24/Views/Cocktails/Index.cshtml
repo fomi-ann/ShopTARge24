@@ -1,5 +1,24 @@
 ﻿@* @model ShopTARge24.Models.Cocktails.CocktailSearchViewModel *@
 
-<form method="get">
-	<button asp-controller="cocktails" asp-action="getRandomCocktail" class="btn btn-success">Get a random drink!</button>
-</form>
+
+<div class="container">
+    <div class="row align-items-center">
+
+        <div class="col-md-6 d-flex justify-content-center">
+            <form asp-action="GetCocktail" method="post" class="d-flex">
+                <input type="text" name="cocktail" class="form-control me-2"
+                       placeholder="Search cocktail..." required
+                       oninvalid="this.setCustomValidity('Please enter a cocktail name!')"
+                       oninput="this.setCustomValidity('')" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-center">
+            <form method="get">
+                <button asp-controller="Cocktails" asp-action="GetCocktail" class="btn btn-success"> Get a random drink! </button>
+            </form>
+        </div>
+
+    </div>
+</div>
