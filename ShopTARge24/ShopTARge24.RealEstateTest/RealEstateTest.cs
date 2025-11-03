@@ -1,11 +1,30 @@
-﻿namespace ShopTARge24.RealEstateTest
+﻿using System.Threading.Tasks;
+using ShopTARge24.Core.Dto;
+using ShopTARge24.Core.ServiceInterface;
+
+namespace ShopTARge24.RealEstateTest
 {
-    public class UnitTest1
+    public class RealEstateTest : TestBase
     {
         [Fact]
-        public void Test1()
+        public async Task Test1()
         {
+            //Arrange
+            RealEstateDto dto = new RealEstateDto()
+            {
+                Area = 120.5,
+                Location = "Test Loction",
+                RoomNumber = 3,
+                BuildingType = "Apartment",
+                CreatedAt = DateTime.UtcNow,
+                ModifiedAt = DateTime.UtcNow
+            };
 
+            //Act
+            var result = await Svc<IRealEstateServices>().Create(dto);
+
+            //Assert
+            Assert.NotNull(result);
         }
     }
 }
