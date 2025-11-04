@@ -5,7 +5,7 @@
 }
 
 <div>
-	<a asp-action="create" asp-controller="Spaceships" type="submit" class="btn btn-primary">Create</a>
+	<a id="TestIdCreate" asp-action="create" asp-controller="Spaceships" type="submit" class="btn btn-primary">Create</a>
 </div>
 
 <div class="h1">
@@ -27,11 +27,11 @@
 			@foreach (var spaceship in Model)
 			{
 				<tr>
-					<td>@rowNumber</td>
-					<td>@spaceship.Name</td>
-					<td>@spaceship.Classification</td>
+					<td id="testIdRN#">@rowNumber</td>
+					<td id="testIdNAM_I">@spaceship.Name</td>
+					<td id="testIdCLASS_I">@spaceship.Classification</td>
 					<td>@spaceship.BuiltDate</td>
-					<td>@spaceship.Crew</td>
+					<td id="testIdCREW_I">@spaceship.Crew</td>
 					<td>
 						<a asp-action="details" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-primary">Details</a>
 						<a asp-action="update" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-primary">Update</a>
