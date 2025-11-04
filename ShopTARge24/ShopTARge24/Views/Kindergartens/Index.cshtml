@@ -5,7 +5,7 @@
 }
 
 <div>
-	<a asp-action="create" asp-controller="Kindergartens" type="submit" class="btn btn-primary">Create</a>
+	<a id="createIndex" asp-action="create" asp-controller="Kindergartens" type="submit" class="btn btn-primary">Create</a>
 </div>
 
 <div class="h1">
@@ -16,11 +16,11 @@
 		<thead>
 			<tr>
 				<th scope="col">Nr</th>
-				<th scope="col">Kindergarten Name</th>
-				<th scope="col">Group Name</th>
-				<th scope="col">Group Creation Date</th>
-				<th scope="col">Teacher Name</th>
-				<th scope="col">Children Count</th>
+				<th id="kindergartenName" scope="col">Kindergarten Name</th>
+				<th id="groupName" scope="col">Group Name</th>
+				<th id="groupCreated" scope="col">Group Creation Date</th>
+				<th id="teacherName" scope="col">Teacher Name</th>
+				<th id="childrenCount" scope="col">Children Count</th>
 			</tr>
 		</thead>
 		<tbody>
