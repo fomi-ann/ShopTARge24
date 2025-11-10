@@ -4,14 +4,16 @@ using System.Linq;
 using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using ShopTARge24.RealEstateTest.Macros;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting.Internal;
 using ShopTARge24.ApplicationServices.Services;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+using ShopTARge24.RealEstateTest.Macros;
+using ShopTARge24.RealEstateTest.Mock;
 
 namespace ShopTARge24.RealEstateTest
 {
@@ -27,8 +29,16 @@ namespace ShopTARge24.RealEstateTest
 
         public virtual void SetupServices(IServiceCollection services)
         {
+            //services.AddSingleton<IHostEnvironment>(new HostingEnvironment
+            //{
+            //    EnvironmentName = Environments.Development,
+            //    ApplicationName = "ShopTARge24.RealEstateTest",
+            //    ContentRootPath = AppContext.BaseDirectory
+            //});
+
             services.AddScoped<IRealEstateServices, RealEstateServices>();
             services.AddScoped<IFileServices, FileServices>();
+            services.AddScoped<IHostEnvironment, MockHostEnvironment>();
 
             services.AddDbContext<ShopTARge24Context>(x =>
             {
