@@ -64,7 +64,7 @@ else
 				</a>
 			}
 		</div>
-		<a asp-action="Index" asp-asp-controller="kindergartens" class="btn btn-success">Back</a>
+		<a asp-action="Index" asp-asp-controller="kindergartens" id="backToIndexCrtUpd" class="btn btn-success">Back</a>
 		@if (Model.Id != Guid.Empty)
 		{
 		<input id="updateCrtUpd" asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
