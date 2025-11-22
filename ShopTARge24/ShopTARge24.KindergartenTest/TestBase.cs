@@ -6,6 +6,7 @@ using ShopTARge24.ApplicationServices.Services;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.KindergartenTest.Macros;
+using ShopTARge24.KindergartenTest.Mock;
 
 namespace ShopTARge24.KindergartenTest
 {
@@ -22,8 +23,8 @@ namespace ShopTARge24.KindergartenTest
         public virtual void SetupServices(IServiceCollection services)
         {
             services.AddScoped<IKindergartenServices, KindergartenServices>();
-            services.AddScoped<IFileServices, IFileServices>();
-            services.AddScoped<IHostEnvironment,  IHostEnvironment>();
+            services.AddScoped<IFileServices, FileServices>();
+            services.AddScoped<IHostEnvironment,  MockHostEnvironment>();
 
             services.AddDbContext<ShopTARge24Context>(x =>
             {
