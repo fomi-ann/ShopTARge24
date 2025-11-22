@@ -128,17 +128,5 @@ namespace ShopTARge24.SpaceshipsTest
 
             return dto;
         }
-
-        //SpaceshipDto dto = new SpaceshipDto()
-        //{
-        //    Id = Guid.NewGuid(),
-        //    Name = "Logos",
-        //    Classification = "Hovercraft",
-        //    BuiltDate = DateTime.Now.AddYears(42),
-        //    Crew = 11,
-        //    EnginePower = 1034,
-        //    CreatedAt = DateTime.Now,
-        //    ModifiedAt = DateTime.Now,
-        //};
     }
 }
