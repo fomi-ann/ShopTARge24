@@ -72,34 +72,77 @@ namespace ShopTARge24.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm)
         {
-            var dto = new RealEstateDto()
+            if (ModelState.IsValid)
             {
-                Id = vm.Id,
-                Area = vm.Area,
-                Location = vm.Location,
-                RoomNumber = vm.RoomNumber,
-                BuildingType = vm.BuildingType,
-                CreatedAt = vm.CreatedAt,
-                ModifiedAt = vm.ModifiedAt,
-                Files = vm.Files,
-                Image = vm.Images
-                .Select(x => new FileToDatabaseDto
+                var dto = new RealEstateDto()
                 {
-                    Id = x.Id,
-                    ImageData = x.ImageData,
-                    ImageTitle = x.ImageTitle,
-                    RealEstateId = x.RealEstateId
-                }).ToArray()
-            };
+                    Id = vm.Id,
+                    Area = vm.Area,
+                    Location = vm.Location,
+                    RoomNumber = vm.RoomNumber,
+                    BuildingType = vm.BuildingType,
+                    CreatedAt = vm.CreatedAt,
+                    ModifiedAt = vm.ModifiedAt,
+                    Files = vm.Files,
+                    Image = vm.Images
+                    .Select(x => new FileToDatabaseDto
+                    {
+                        Id = x.Id,
+                        ImageData = x.ImageData,
+                        ImageTitle = x.ImageTitle,
+                        RealEstateId = x.RealEstateId
+                    }).ToArray()
+                };
 
-            var result = await _realEstateServices.Create(dto);
-            if (result == null)
-            {
+                var result = await _realEstateServices.Create(dto);
+                if (result == null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
                 return RedirectToAction(nameof(Index));
+            } else
+            {
+                return View("NotFound");
             }
-
-            return RedirectToAction(nameof(Index));
         }
+        //[HttpPost]
+        //public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm)
+        //{
+        //    if ( vm.Area > 0 && vm.RoomNumber > 0) {
+            
+        //    var dto = new RealEstateDto()
+        //    {
+        //        Id = vm.Id,
+        //        Area = vm.Area,
+        //        Location = vm.Location,
+        //        RoomNumber = vm.RoomNumber,
+        //        BuildingType = vm.BuildingType,
+        //        CreatedAt = vm.CreatedAt,
+        //        ModifiedAt = vm.ModifiedAt,
+        //        Files = vm.Files,
+        //        Image = vm.Images
+        //        .Select(x => new FileToDatabaseDto
+        //        {
+        //            Id = x.Id,
+        //            ImageData = x.ImageData,
+        //            ImageTitle = x.ImageTitle,
+        //            RealEstateId = x.RealEstateId
+        //        }).ToArray()
+        //    };
+
+        //    var result = await _realEstateServices.Create(dto);
+        //    if (result == null)
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+
+        //        return RedirectToAction(nameof(Index));
+        //    } else
+        //    {
+        //        return RedirectToAction(nameof(Create));
+        //    }
+        //}
 
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)

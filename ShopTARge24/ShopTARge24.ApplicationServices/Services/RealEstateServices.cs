@@ -89,7 +89,7 @@ namespace ShopTARge24.ApplicationServices.Services
             //        RealEstateId = y.RealEstateId,
             //    }).ToArray();
             //await _fileServices.RemoveImagesFromDatabase(images);
-            //_context.RealEstates.Remove(result);
+            _context.RealEstates.Remove(result);
 
             await _context.SaveChangesAsync();
 
