@@ -11,7 +11,7 @@ namespace ShopTARge24.Core.ServiceInterface
         Task<FileToApi> RemoveImageFromApi(FileToApiDto dto);
         Task<List<FileToApi>> RemoveImagesFromApi(FileToApiDto[] dtos);
         Task UploadFilesToDatabase(RealEstateDto dto, RealEstate domain);
-        Task RemoveImagesFromDatabase(FileToDatabaseDto[] dtos);
+        //Task RemoveImagesFromDatabase(FileToDatabaseDto[] dtos);
         
     }
 }

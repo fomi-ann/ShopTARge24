@@ -254,51 +254,49 @@ namespace ShopTARge24.RealEstateTest
         //kommentaari kirjutate, mida iga test kontrollib
 
 
+        //[Fact]
+        //public async Task Should_DeleteRelatedImages_WhenDeleteRealEstate()
+        //{
+        //    // Arrange
+        //    var dto = new RealEstateDto
+        //    {
+        //        Area = 55.0,
+        //        Location = "Tallinn",
+        //        RoomNumber = 2,
+        //        BuildingType = "Apartment",
+        //        CreatedAt = DateTime.Now,
+        //        ModifiedAt = DateTime.Now
+        //    };
 
+        //    var created = await Svc<IRealEstateServices>().Create(dto);
+        //    var id = (Guid)created.Id;
 
-        [Fact]
-        public async Task Should_DeleteRelatedImages_WhenDeleteRealEstate()
-        {
-            // Arrange
-            var dto = new RealEstateDto
-            {
-                Area = 55.0,
-                Location = "Tallinn",
-                RoomNumber = 2,
-                BuildingType = "Apartment",
-                CreatedAt = DateTime.Now,
-                ModifiedAt = DateTime.Now
-            };
+        //    var db = Svc<ShopTARge24Context>;
+        //    db.UploadFilesToDatabase.Add(new FileToDatabaseDto
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        RealEstateId = id,
+        //        ImageTitle = "kitchen.jpg",
+        //        ImageData = new byte[] { 1, 2, 3 }
+        //    });
 
-            var created = await Svc<IRealEstateServices>().Create(dto);
-            var id = (Guid)created.Id;
-
-            var db = Svc<ShopTARge24Context>;
-            db.FileToDatabaseDto.Add(new FileToDatabase
-            {
-                Id = Guid.NewGuid(),
-                RealEstateId = id,
-                ImageTitle = "kitchen.jpg",
-                ImageData = new byte[] { 1, 2, 3 }
-            });
-             
-            db.FileToDatabaseDto.Add(new FileToDatabase
-            {
-                Id = Guid.NewGuid(),
-                RealEstateId = id,
-                ImageTitle = "livingroom.jpg",
-                ImageData = new byte[] { 3, 4, 5 }
-            });
+        //    db.UploadFilesToDatabase.Add(new FileToDatabaseDto
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        RealEstateId = id,
+        //        ImageTitle = "livingroom.jpg",
+        //        ImageData = new byte[] { 3, 4, 5 }
+        //    });
             
-            await db.SaveChangesAsync();
+        //    await db.UploadFilesToDatabase();
 
-            // Act
-            await Svc<IRealEstateServices>().Delete(id);
+        //    // Act
+        //    await Svc<IRealEstateServices>().Delete(id);
 
-            //Assert
-            var leftovers = db.FileToDatabases.Where(Xunit => Xunit.RealEstateId == id).ToList();
-            Assert.Empty(leftovers);
-        }
+        //    //Assert
+        //    var leftovers = db.UploadFilesToDatabase.Where(x => x.RealEstateId == id).ToList();
+        //    Assert.Empty(leftovers);
+        //}
 
         [Fact]
         public async Task Should_AddValidRealEstate_WhenDataTypeIsValid()

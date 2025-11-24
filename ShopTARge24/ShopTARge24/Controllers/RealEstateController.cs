@@ -40,11 +40,11 @@ namespace ShopTARge24.Controllers
         {
             var realEstate = await _realEstateServices.DetailAsync(id);
 
-            if (realEstate == null)
+            if (realEstate == null )
             {
-                return NotFound();
+                return View("NotFound", id);
             }
-            RealEstateImageViewModel[] images = await FilesFromDatabase(id);
+                RealEstateImageViewModel[] images = await FilesFromDatabase(id);
 
             var vm = new RealEstateDetailsViewModel();
 
@@ -107,7 +107,7 @@ namespace ShopTARge24.Controllers
             var realEstate = await _realEstateServices.DetailAsync(id);
             if (realEstate == null)
             {
-                return NotFound();
+                return View("NotFound", id);
             }
 
             RealEstateImageViewModel[] images = await FilesFromDatabase(id);
@@ -156,7 +156,7 @@ namespace ShopTARge24.Controllers
             var realEstate = await _realEstateServices.DetailAsync(id);
             if (realEstate == null)
             {
-                return NotFound();
+                return View("NotFound", id);
             }
 
             RealEstateImageViewModel[] images = await FilesFromDatabase(id);
