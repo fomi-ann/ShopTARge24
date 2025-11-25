@@ -72,39 +72,39 @@ namespace ShopTARge24.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var dto = new RealEstateDto()
-                {
-                    Id = vm.Id,
-                    Area = vm.Area,
-                    Location = vm.Location,
-                    RoomNumber = vm.RoomNumber,
-                    BuildingType = vm.BuildingType,
-                    CreatedAt = vm.CreatedAt,
-                    ModifiedAt = vm.ModifiedAt,
-                    Files = vm.Files,
-                    Image = vm.Images
-                    .Select(x => new FileToDatabaseDto
-                    {
-                        Id = x.Id,
-                        ImageData = x.ImageData,
-                        ImageTitle = x.ImageTitle,
-                        RealEstateId = x.RealEstateId
-                    }).ToArray()
-                };
-
-                var result = await _realEstateServices.Create(dto);
-                if (result == null)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-
-                return RedirectToAction(nameof(Index));
-            } else
-            {
-                return View("NotFound");
+                return View("CreateUpdate", vm);
             }
+
+            var dto = new RealEstateDto()
+            {
+                Id = vm.Id,
+                Area = vm.Area,
+                Location = vm.Location,
+                RoomNumber = vm.RoomNumber,
+                BuildingType = vm.BuildingType,
+                CreatedAt = vm.CreatedAt,
+                ModifiedAt = vm.ModifiedAt,
+                Files = vm.Files,
+                Image = vm.Images
+                .Select(x => new FileToDatabaseDto
+                {
+                    Id = x.Id,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    RealEstateId = x.RealEstateId
+                }).ToArray()
+            };
+
+            var result = await _realEstateServices.Create(dto);
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
+
         }
         //[HttpPost]
         //public async Task<IActionResult> Create(RealEstateCreateUpdateViewModel vm)
@@ -172,6 +172,11 @@ namespace ShopTARge24.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(RealEstateCreateUpdateViewModel vm)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("CreateUpdate", vm);
+            }
+
             var dto = new RealEstateDto()
             {
                 Id = vm.Id,
