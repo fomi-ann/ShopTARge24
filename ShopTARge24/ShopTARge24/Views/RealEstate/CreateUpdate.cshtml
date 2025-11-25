@@ -54,13 +54,6 @@ else
 			</div>
 		</div>
 
-		<div>
-			@foreach (var images in Model.Images)
-			{
-				<partial name="_Images" model="images" />
-			}
-		</div>
-
 		@if (Model.Id.HasValue)
 		{
 			@foreach (var images in Model.Images)
