@@ -96,10 +96,11 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return null;
         }
-        public async Task UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        public void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
         {
             //kontroll kas on v'hemalt [ks fail v]i mitu
-            if (dto.Files != null && dto.Files.Count > 0) {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
 
                 foreach (var file in dto.Files)
                 {
@@ -119,18 +120,34 @@ namespace ShopTARge24.ApplicationServices.Services
                     }
                 }
             }
-
-            //async Task<FileToDatabase> RemoveImagesFromDatabase(FileToDatabaseDto[] dtos)
-            //{
-            //    foreach (var dto in dtos)
-            //    {
-            //        var imageId = await _context.FileToDatabases
-            //            .Where(x => x.Id == dto.Id)
-            //            .FirstOrDefaultAsync(x => x.Id == dto.Id);
-            //        _context.FileToDatabses.Remove(imageId);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //}
         }
+
+        public async Task<FileToDatabase> RemoveFilesFromDatabase(FileToDatabaseDto[] dtos)
+        {
+            foreach (var dto in dtos)
+            {
+                var imageId = await _context.FileToDatabases
+                    .Where(x => x.Id == dto.Id)
+                    .FirstOrDefaultAsync(x => x.Id == dto.Id);
+                    
+                _context.FileToDatabases.Remove(imageId);
+                await _context.SaveChangesAsync();
+            }
+
+            return null;
+        }
+
+        public async Task<FileToDatabase> RemoveFileFromDatabase(FileToDatabaseDto dto)
+        { 
+            var image = await _context.FileToDatabases
+                .Where(x => x.Id == dto.Id)
+                .FirstOrDefaultAsync();
+                    
+            _context.FileToDatabases.Remove(image);
+            await _context.SaveChangesAsync();
+
+            return image;
+        }
+        
     }
 }
