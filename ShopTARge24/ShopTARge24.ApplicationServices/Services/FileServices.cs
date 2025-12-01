@@ -139,14 +139,14 @@ namespace ShopTARge24.ApplicationServices.Services
 
         public async Task<FileToDatabase> RemoveFileFromDatabase(FileToDatabaseDto dto)
         { 
-            var image = await _context.FileToDatabases
+            var imageId = await _context.FileToDatabases
                 .Where(x => x.Id == dto.Id)
                 .FirstOrDefaultAsync();
                     
-            _context.FileToDatabases.Remove(image);
+            _context.FileToDatabases.Remove(imageId);
             await _context.SaveChangesAsync();
 
-            return image;
+            return imageId;
         }
         
     }

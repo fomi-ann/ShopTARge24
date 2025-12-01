@@ -15,18 +15,18 @@ namespace ShopTARge24.ApplicationServices.Services
     {
         private readonly ShopTARge24Context _context;
         private readonly IFileServices _fileServices;
-        private readonly IRealEstateServices _realEstateServices;
+
 
         public RealEstateServices
             (
             ShopTARge24Context context,
-            IFileServices fileServices,
-            IRealEstateServices realEstate
+            IFileServices fileServices
+
             )
         {
             _context = context;
             _fileServices = fileServices;
-            _realEstateServices = realEstate;
+
         }
 
         public async Task<RealEstate> DetailAsync(Guid id)
