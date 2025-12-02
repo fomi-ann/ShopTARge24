@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.ApplicationServices.Services;
 using Microsoft.Extensions.FileProviders;
+using ShopTARge24.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,8 @@ builder.Services.AddScoped<IEmailServices, EmailServices>();
 
 builder.Services.AddDbContext<ShopTARge24Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +33,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -41,6 +45,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapRazorPages();
+app.MapHub<UserHub>("/hubs/userCount");
 app.UseStaticFiles();
 
 app.Run();
