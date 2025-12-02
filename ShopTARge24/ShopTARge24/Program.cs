@@ -47,6 +47,7 @@ app.MapControllerRoute(
 
 
 app.MapHub<UserHub>("/hubs/userCount");
+app.MapHub<DeathlyHallowsHub>("/hubs/deathlyhallows");
 app.UseStaticFiles();
 
 app.Run();
