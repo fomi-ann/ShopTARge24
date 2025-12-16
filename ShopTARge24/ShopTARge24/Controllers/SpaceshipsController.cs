@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.Spaceships;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
+    //[Authorize(Roles="Admin]
     public class SpaceshipsController : Controller
     {
         private readonly ShopTARge24Context _context;
@@ -25,7 +29,7 @@ namespace ShopTARge24.Controllers
             _fileServices = fileServices;
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             var result = _context.Spaceships
                 .Select(x => new SpaceshipIndexViewModel
@@ -73,10 +77,10 @@ namespace ShopTARge24.Controllers
             var result = await _spaceshipServices.Create(dto);
             if (result == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
 
         [HttpGet]
@@ -139,9 +143,9 @@ namespace ShopTARge24.Controllers
 
             if (result == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
 
 
@@ -185,9 +189,9 @@ namespace ShopTARge24.Controllers
 
             if (spaceship == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
 
         [HttpGet]
@@ -235,9 +239,9 @@ namespace ShopTARge24.Controllers
 
             if (image == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexAsync));
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexAsync));
         }
     }
 }
