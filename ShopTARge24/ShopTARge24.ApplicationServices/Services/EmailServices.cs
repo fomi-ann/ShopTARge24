@@ -13,6 +13,7 @@ using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 
 namespace ShopTARge24.ApplicationServices.Services
 {
+
     public class EmailServices : IEmailServices
     {
         private readonly IConfiguration _config;
@@ -27,7 +28,7 @@ namespace ShopTARge24.ApplicationServices.Services
         public void SendEmail(EmailDto dto)
         {
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUserName").Value));
+            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
             email.To.Add(MailboxAddress.Parse(dto.To));
             email.Subject = dto.Subject;
 

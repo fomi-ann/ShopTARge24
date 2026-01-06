@@ -38,7 +38,9 @@
             <button type="submit" class="btn btn-primary">
                 Login
             </button>
-
+            <div>
+                <a asp-action="ForgotPassword">Forgot Password?</a>
+            </div>
         </form>
     </div>
 </div>
@@ -47,6 +49,31 @@
         <div class="text-center">
                 <h3>&#128187; &#128073; &#127756;</h3>
             <h3>External Login</h3>
+
+                <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+                    <div>
+                        <button type="submit" class="btn btn-primary" name="provider" value="Google">
+                            Log in with Google
+                        </button>
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="btn btn-dark"
+                                name="provider"
+                                value="GitHub">
+                            Log in with GitHub
+                        </button>
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="btn btn-info"
+                                name="provider"
+                                value="Facebook">
+                            Log in with Facebook
+                        </button>
+                    </div>
+                </form>
+
         </div>
     </div>
 </div>
